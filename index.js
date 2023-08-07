@@ -41,3 +41,32 @@ function playRound(playerSelection, computerSelection) {
     return "You lose! Scissors beat paper!";
   }
 }
+
+function game() {
+  let playerScore = 0;
+  let computerScore = 0;
+
+  for (let i = 1; i <= 5; i++) {
+    console.log(`Round ${i}/5!`);
+    let playerSelection = prompt("Choose: rock, paper or scissors?");
+    let computerSelection = getComputerChoice();
+    let outcome = playRound(playerSelection, computerSelection);
+    if (outcome.includes("win")) {
+      playerScore++;
+    } else if (outcome.includes("lose")) {
+      computerScore++;
+    }
+    console.log(outcome);
+  }
+
+  console.log(`The final score is ${playerScore}:${computerScore}!`);
+  if (playerScore > computerScore) {
+    console.log("You won!");
+  } else if (playerScore < computerScore) {
+    console.log("You lost!");
+  } else {
+    console.log("It's a draw!");
+  }
+}
+
+game();
