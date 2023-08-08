@@ -42,31 +42,42 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-function game() {
-  let playerScore = 0;
-  let computerScore = 0;
-
-  for (let i = 1; i <= 5; i++) {
-    console.log(`Round ${i}/5!`);
-    let playerSelection = prompt("Choose: rock, paper or scissors?");
-    let computerSelection = getComputerChoice();
-    let outcome = playRound(playerSelection, computerSelection);
-    if (outcome.includes("win")) {
-      playerScore++;
-    } else if (outcome.includes("lose")) {
-      computerScore++;
-    }
-    console.log(outcome);
+function endGame(playerScore, computerScore) {
+  let message = `The final score is ${playerScore}:${computerScore}!\n`;
+  if (playerScore > computerScore) {
+    message = message.concat("You won!");
+  } else {
+    message = message.concat("You lost!");
   }
 
-  console.log(`The final score is ${playerScore}:${computerScore}!`);
-  if (playerScore > computerScore) {
-    console.log("You won!");
-  } else if (playerScore < computerScore) {
-    console.log("You lost!");
-  } else {
-    console.log("It's a draw!");
+  if (alert(message)) {} 
+  else {
+    window.location.reload();
   }
 }
 
-game();
+function main() {
+  const score = document.querySelector("#score");
+  const display = document.querySelector("#display");
+  const buttons = document.querySelectorAll("button");
+  let playerScore = 0;
+  let computerScore = 0;
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      const outcome = playRound(button.id, getComputerChoice());
+      if (outcome.includes("win")) {
+        playerScore++;
+      } else if (outcome.includes("lose")) {
+        computerScore++;
+      }
+      score.textContent = `Score: ${playerScore}:${computerScore}`;
+      display.textContent = outcome;
+      if (playerScore === 5 || computerScore === 5) {
+        endGame(playerScore, computerScore);
+      }
+    });
+  });
+}
+
+main()
