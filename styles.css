@@ -1,0 +1,52 @@
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background-color: #557cac;
+  color: white;
+  font-family: "Impact", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5em;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  width: 200px;
+  height: 200px;
+}
+
+#score, #display {
+  font-size: 72px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 #000,
+               -2px -2px 0 #000,
+               2px -2px 0 #000,
+               -2px 2px 0 #000,
+               0px 2px 0 #000,
+               2px 0px 0 #000,
+               0px -2px 0 #000,
+               -2px 0px 0 #000,
+               2px 2px 5px #000;
+}
+
+#rock {
+  background: url(./images/rock.png) no-repeat;
+  background-size: contain;
+}
+
+#paper {
+  background: url(./images/paper.png) no-repeat;
+  background-size: contain;
+}
+
+#scissors {
+  background: url(./images/scissors.png) no-repeat;
+  background-size: contain;
+}
