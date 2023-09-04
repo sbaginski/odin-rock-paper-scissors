@@ -4,14 +4,24 @@ html, body {
 }
 
 body {
-  background-color: #557cac;
   color: white;
   font-family: "Impact", sans-serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 5em;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3000;
+  background: transparent;
+}
+
+body div {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
 }
 
 button {
@@ -23,6 +33,88 @@ button {
 
 button:hover {
   transform: rotate(-45deg) !important;
+} 
+
+img {
+  overflow-clip-margin: content-box;
+  overflow: clip;
+}
+
+.cloud {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: top left;
+  background-repeat: repeat-x;
+}
+
+.cloud::after {
+  display: block;
+  position: relative;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  background-size: inherit;
+  background-position: inherit;
+  background-image: inherit;
+  content: " "; 
+}
+
+.cloud.level-one {
+  background-image: url(./images/clouds1.png);
+  animation: cloudpan 460s 0s infinite linear;
+  margin-bottom: 10em;
+}
+
+.cloud.level-two {
+  background-image: url(./images/clouds2.png);
+  animation: cloudpan 300s 0s infinite linear;
+}
+
+.cloud img {
+  display: none;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+#background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  background-color: #557cac;
+  background-size: cover;
+  background-position: top left;
+}
+
+#content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5em;
 }
 
 #score, #display {
@@ -64,4 +156,14 @@ button:hover {
   background-position: center;
   background-size: contain;
   transform: rotate(-90deg);
+}
+
+@keyframes cloudpan {
+  0% {
+    transform: translateX(0) translateZ(0);
+  }
+
+  100% {
+    transform: translateX(-100%) translateZ(0);
+  }
 }
